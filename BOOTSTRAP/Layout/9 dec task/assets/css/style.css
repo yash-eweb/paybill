@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #0072ff;
+}
+
+.navbar-brand,
+/* .nav-link {
+    color: white !important;
+} */
+
+.content-section {
+    padding: 20px;
+}
+
+.content-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+.content-section_2 {
+    margin-top: 5%;
+    padding: 20px;
+}
+
+.content-section_2 img {
+
+    width: 100%;
+    /* Makes the image responsive to the container width */
+    height: 50px;
+    /* Sets a fixed height for all images */
+    object-fit: cover;
+    /* Ensures the image covers the container without distortion */
+    border-radius: 8px;
+    /* Optional: Adds rounded corners */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.content-section_3 {
+    padding: 20px;
+
+    margin-top: 7%;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.content-section_5 {
+    h2 {
+        padding: 20px;
+    }
+}
+
+.content-section_6 {
+    padding: 20px;
+    margin-top: 150px;
+}
+
+.content-section_6 img {
+    size: 0pc;
+}
+
+.profile-img {
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 1.cap;
+    font-weight: bold;
+}
+
+.hashtag {
+    font-size: 0.9rem;
+}
+
+.hi {
+    padding-top: 220px;
+    background-color: gray;
+}
+
+.content-section_7 {
+    * {
+        text-align: center;
+    }
+
+    h2 {
+        /* text-align: center; */
+        padding-top: 80px;
+        padding-bottom: 70px;
+    }
+
+    .first-para {
+        color: green;
+        font-size: 18px;
+    }
+
+    /* Center the container using Flexbox */
+    .center-container {
+
+        display: flex;
+        justify-content: center;
+        /* Horizontal centering */
+        align-items: center;
+        /* Vertical centering */
+    }
+
+    input[type="checkbox"] {
+        width: 40px;
+        height: 20px;
+        cursor: pointer;
+        appearance: inherit;
+        /* Remove default styles */
+        border: 2px solid #ccc;
+        /* Add a border */
+        border-radius: 50px;
+        /* Optional: Make it slightly rounded */
+        outline: none;
+        background-color: #fff;
+        /* Initial background */
+        transition: all 0.3s ease;
+    }
+
+    /* Change the background color when checked */
+    input[type="checkbox"]:checked {
+        background-color: green;
+        border-color: green;
+    }
+    .container-7-1{
+        padding: 30px;
+    }
+    .container-8{
+        padding: 120px;
+        height: 200px;
+        width: 180%;
+    } 
+
+}
+
+
+.container-last {
+    margin-top: 10%;
+    /* background-color: lightblue; */
+}
+.last-p{
+    margin-top: 5%;
+    text-align: center;
+}
