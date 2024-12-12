@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>querySelector()</title>
+
+  <style>
+    button {
+  background-color: blue;
+  transition: background-color 0.12s;
+}
+
+button:hover {
+  background-color: red;
+}
+
+.btn {
+    background-color: #0072ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    /* transition: all 40.s linear; */
+    transition: all 0.4s ease; /*Smooth transition effect*/
+}
+
+.btn:hover {
+    background-color: #00c6ff; /* Color changes smoothly on hover */
+    transform: scale(1.1); 
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Website</h1>
+  </header>
+<button type="button">Save</button>
+
+<hr>
+<button class="btn">Hover Me</button>
+
+  
+  <script src="learn.js"></script>
+</body>
+</html>
