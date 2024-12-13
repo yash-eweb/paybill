@@ -132,14 +132,16 @@ body {
         background-color: green;
         border-color: green;
     }
-    .container-7-1{
+
+    .container-7-1 {
         padding: 30px;
     }
-    .container-8{
+
+    .container-8 {
         padding: 120px;
         height: 200px;
         width: 180%;
-    } 
+    }
 
 }
 
@@ -148,7 +150,8 @@ body {
     margin-top: 10%;
     /* background-color: lightblue; */
 }
-.last-p{
+
+.last-p {
     margin-top: 5%;
     text-align: center;
 }
