@@ -1,0 +1,48 @@
+/* Style to hide elements */
+.hidden {
+    display: none;
+}
+
+/* Basic styling for form elements */
+form {
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 160px;
+    background-color: black;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: white;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #1100ff;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+#btn{
+    background-color:red;
+}
+
+button:hover {
+    background-color: #005bb5;
+    cursor: pointer;
+}

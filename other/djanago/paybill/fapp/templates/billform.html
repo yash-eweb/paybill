@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="{% static 'fapp/js/paybill.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'fapp/css/billstyle.css' %}">
+        <!-- <link rel="stylesheet" href="../static/fapp/css/billstyle.css"> -->
+        <title>Add Bill</title>
+    </head>
+
+    <body>
+        <div class="row">
+            <div class="container">
+                <!-- <div class="card"> -->
+                <form method="post" enctype="multipart/form-data" id="billForm">
+                    {% csrf_token %}
+                    
+                        <!-- Bill Name -->
+                        <label for="bill_name">Bill Name:</label>
+                        <input type="text" name="bill_name" id="bill_name"
+                            required><br>
+
+                        <!-- Amount -->
+                        <label for="amount">Amount:</label>
+                        <input type="number" name="amount" id="amount"
+                            step="0.01" required><br>
+
+                        <!-- Warranty Status -->
+                        <label for="warranty_status">Warranty Status:</label>
+                        <select name="warranty_status" id="warranty_status"
+                            required>
+                            <option value="under_warranty">Under
+                                Warranty</option>
+                            <option value="expired">Expired</option>
+                        </select><br>
+
+                        <!-- Expiry Date (Only visible if under warranty or if the user selects expired and remembers the expiry date) -->
+                        <div id="expiry_date_container">
+                            <label for="expiry_date">Expiry Date:</label>
+                            <input type="date" name="expiry_date"
+                                id="expiry_date"><br>
+                        </div>
+
+                        <!-- Remember Expiry Date checkbox -->
+                        <div id="remember_expiry_date_container">
+                            <label for="remember_expiry_date">I don’t remember
+                                the expiry date:</label>
+                            <input type="checkbox" name="remember_expiry_date"
+                                id="remember_expiry_date"><br>
+                        </div>
+
+                        <!-- File Upload -->
+                        <label for="file_path">Upload Bill:</label>
+                        <input type="file" name="file_path" id="file_path"
+                            required><br>
+
+                        <button type="submit">Submit</button>
+                        <!-- <button type="submit">Cancle</button> -->
+                    
+                </form>
+            <!-- </div> -->
+            </div>
+        </div>
+        
+    </body>
+
+</html>
+
+{% endblock %}

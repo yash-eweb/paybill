@@ -1,0 +1,54 @@
+/* Custom CSS */
+body {
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+}
+
+
+.card {
+    margin-top: 50px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.alert {
+    margin-top: 20px;
+}
+
