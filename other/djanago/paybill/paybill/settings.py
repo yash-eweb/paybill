@@ -42,8 +42,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'fapp.middleware.AdminSessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -112,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/kolkata'
 
 USE_I18N = True
 
@@ -125,10 +127,22 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # For development purposes, set the static directory path
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static/fapp'),
+]
+
+# STATICFILES_DIRS = [
+    # r"E:\EWEB\other\djanago\paybill\static",  # Raw string
+    # r"E:\EWEB\other\djanago\paybill\fapp\static\fapp",
+# ]
 
 LOGOUT_REDIRECT_URL = 'login'  # Redirect to the login page after logout
 
+LOGIN_URL = '/'
+
+# Media files settings
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
