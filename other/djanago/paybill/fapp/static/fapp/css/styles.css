@@ -1,9 +1,57 @@
 /* Custom CSS */
-body {
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
+
+#bill{
+    margin-top: 50px;
 }
 
+.footer {
+    height: 60px;
+    /* Set fixed height for the footer */
+}
+
+body {
+    background-color: #f7f7f7;
+    
+    /* font-family: Arial, sans-serif; */
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    
+    /* display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0; */
+}
+
+.alert-container {
+    margin: 20px 0;
+}
+
+.alert-info {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+
+.delete-icon {
+    color: red;
+}
+.edit-icon {
+    color: rgb(11, 226, 204);
+    /* or #007bff for blue */
+}
+
+/* .navbar{
+    display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+} */
 
 .card {
     margin-top: 50px;
@@ -52,3 +100,76 @@ body {
     margin-top: 20px;
 }
 
+
+h1{
+    text-align: center;
+    color: #0072ff;   
+    margin-top: 50px; 
+}
+.h{
+    text-align: center;
+    color: #0072ff;   
+    margin-top: 50px; 
+
+}
+
+
+/* Base styles for desktop */
+
+/* Styles for tablets and smaller screens */
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .column {
+        width: 100%;
+    }
+}
+
+/* Styles for mobile phones */
+@media only screen and (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+                /*.navbar {
+     flex-direction: column; 
+    }*/
+}
+/* Default nav-link styles */
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Highlight the active nav-link */
+.nav-link.active {
+    background-color: green;
+    /* Highlight active link with green */
+    color: white;
+    font-weight: bold;
+}
+
+/* Hover effect for nav-links */
+.nav-link:hover {
+    background-color: #005bb5;
+    /* Slightly darker blue on hover */
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+}

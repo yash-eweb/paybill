@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <script src="{% static 'fapp/js/paybill.js' %}"></script>
+    <!-- <link rel="stylesheet" href="{% static 'fapp/css/billstyle.css' %}"> -->
+    <title>Update Bill</title>
+
+
+<body>
+    <div class="container my-4">
+    <div class="row justify-content-center"><br><br>
+        <div class="col-12 col-md-10 col-lg-8">
+            <div class="card shadow p-4">
+                <h1 class="text-center mb-2  text-primary">Update Bill</h1>
+        <form method="post" action="{% url 'update' bill.pk %}" enctype="multipart/form-data" id="billForm">
+            {% csrf_token %}
+            
+             <div class="mb-3">
+            <label for="bill_name" class="form-label">Bill Name:</label>
+            <input type="text" name="bill_name" class="form-control" step="0.01" id="bill_name" value="{{bill.bill_name}}">
+</div>
+
+            <div class="mb-3">
+            <label for="amount" class="form-label">Amount:</label>
+            <input type="number" name="amount" class="form-control" step="0.01" id="amount" value="{{bill.amount}}" step="0.01">
+    </div>
+           
+    <!-- Warranty Status -->
+    <div class="mb-3">
+            <label for="warranty_status" class="form-label">Warranty Status:</label>
+            <select name="warranty_status" id="warranty_status" class="form-select">
+                <option value="under_warranty" {% if bill.warranty_status == 'under_warranty'%}selected{% endif %}>
+                    Under Warranty</option>
+                <option value="expired" {% if bill.warranty_status == 'expired' %}selected{% endif %}>
+                    Expired</option>
+            </select>
+            </div>
+
+            
+            <div id="expiry_date_container" class="mb.3">
+                <label for="expiry_date" class="form-label">Expiry Date:</label>
+                <input type="date" class="form-control" name="expiry_date" value="{{bill.expiry_date|date:'Y-m-d'}}" id="expiry_date">
+            </div>
+            
+
+            <!-- Remember Expiry Date checkbox -->
+            <div id="remember_expiry_date_container" class="form-check mb-3">
+                <label for="remember_expiry_date" class="form-check-label">
+                    <input type="checkbox" name="remember_expiry_date" {% if bill.remember_expiry_date%}checked{% endif %} id="remember_expiry_date" >
+                    I don’t remember the expiry date
+                </label>
+            </div>
+
+            <div class="mb-3">
+            <label for="file_path" class="form-label">Upload Bill:</label>
+            <input type="file" name="file_path" id="file_path" class="form-control">
+            {% if bill.file_path %}
+            <label for="form-label">
+            <p>Current file: 
+                <a href="{{ bill.file_path.url }}"  target="_blank">View File</a>
+            </p>
+            </label>
+            {% endif %}
+            </div>
+               
+            <div class="text-center">
+            <button type="submit" class="btn btn-primary w-100 mb-2">Submit</button>
+            <a href="{% url 'home' %}" class="btn btn-secondary w-100">Go Back</a>
+            </div>
+        </form>
+    </div>
+    </div>
+</body>
+
+
+{% endblock %}

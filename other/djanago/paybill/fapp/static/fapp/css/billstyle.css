@@ -1,48 +1,122 @@
-/* Style to hide elements */
-.hidden {
-    display: none;
-}
+ body {
+     font-family: Arial, sans-serif;
+     margin: 0;
+     padding: 0;
+     background-color: #f4f4f4;
+ }
 
-/* Basic styling for form elements */
-form {
-    width: 500px;
-    margin: auto;
-    padding: 20px;
-    margin-top: 160px;
-    background-color: black;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-}
+ .container {
+     max-width: 400px;
+     max-width: auto;
+     margin: 20px auto;
+     padding: 15px;
+     background: #ffffff;
+     border-radius: 8px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+ }
 
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: white;
-}
+ h1.h {
+     text-align: center;
+     color: #0072ff;
+     margin-bottom: 20px;
+ }
 
-input,
-select,
-button {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
+ label {
+     display: block;
+     font-weight: bold;
+     margin: 10px 0 5px;
+     color: #333;
+ }
 
-button {
-    background-color: #1100ff;
-    color: white;
-    font-weight: bold;
-    border: none;
-}
-#btn{
-    background-color:red;
-}
+ input[type="text"],
+ input[type="number"],
+ input[type="date"],
+ select,
+ input[type="file"] {
+     width: 100%;
+     padding: 10px;
+     margin-bottom: 15px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+ }
 
-button:hover {
-    background-color: #005bb5;
-    cursor: pointer;
-}
+ input[type="checkbox"] {
+     margin-right: 10px;
+ }
+
+ button {
+     width: 100%;
+     padding: 10px;
+     background-color: #0072ff;
+     color: white;
+     font-size: 16px;
+     font-weight: bold;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+ }
+
+ button:hover {
+     background-color: #005bb5;
+ }
+
+ p {
+     font-size: 14px;
+     margin-top: -10px;
+ }
+
+ a {
+     color: #0072ff;
+     text-decoration: none;
+ }
+
+ a:hover {
+     text-decoration: underline;
+ }
+
+ @media (max-width: 769px) {
+     .container {
+        max-width: 600px;
+            padding: 20px;
+     }
+
+     h1.h {
+         font-size: 20px;
+     }
+
+     button {
+         font-size: 16px;
+     }
+ }
+
+  @media (max-width: 768px) {
+      .container {
+          max-width: 90%;
+          padding: 15px;
+      }
+
+      h1.h {
+          font-size: 1.8rem;
+      }
+
+      button {
+          font-size: 14px;
+      }
+  }
+
+ @media (max-width: 480px) {
+     .container {
+         max-width: 95%;
+         padding: 10px;
+     }
+
+     h1.h {
+         font-size: 1.5rem;
+     }
+
+     button {
+         font-size: 12px;
+     }
+ }
+
+ 

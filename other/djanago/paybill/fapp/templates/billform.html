@@ -1,74 +1,67 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="{% static 'fapp/js/paybill.js' %}"></script>
-        <link rel="stylesheet" href="{% static 'fapp/css/billstyle.css' %}">
-        <!-- <link rel="stylesheet" href="../static/fapp/css/billstyle.css"> -->
-        <title>Add Bill</title>
-    </head>
 
-    <body>
-        <div class="row">
-            <div class="container">
-                <!-- <div class="card"> -->
+{% load static %}
+<script src="{% static 'fapp/js/paybill.js' %}"></script>
+<!-- <link rel="stylesheet" href="{% static 'fapp/css/billstyle.css' %}"> -->
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <div class="card shadow p-4">
+                <h1 class="text-center mb-2  text-primary">Add New Bill</h1>
                 <form method="post" enctype="multipart/form-data" id="billForm">
                     {% csrf_token %}
-                    
-                        <!-- Bill Name -->
-                        <label for="bill_name">Bill Name:</label>
-                        <input type="text" name="bill_name" id="bill_name"
-                            required><br>
 
-                        <!-- Amount -->
-                        <label for="amount">Amount:</label>
-                        <input type="number" name="amount" id="amount"
-                            step="0.01" required><br>
+                    <!-- Bill Name -->
+                    <div class="mb-3">
+                        <label for="bill_name" class="form-label">Bill Name:</label>
+                        <input type="text" name="bill_name" id="bill_name" class="form-control" placeholder="Enter bill name" required>
+                    </div>
 
-                        <!-- Warranty Status -->
-                        <label for="warranty_status">Warranty Status:</label>
-                        <select name="warranty_status" id="warranty_status"
-                            required>
-                            <option value="under_warranty">Under
-                                Warranty</option>
+                    <!-- Amount -->
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount:</label>
+                        <input type="number" name="amount" id="amount" class="form-control" step="0.01" placeholder="Enter amount" required>
+                    </div>
+
+                    <!-- Warranty Status -->
+                    <div class="mb-3">
+                        <label for="warranty_status" class="form-label">Warranty Status:</label>
+                        <select name="warranty_status" id="warranty_status" class="form-select" required>
+                            <option value="under_warranty">Under Warranty</option>
                             <option value="expired">Expired</option>
-                        </select><br>
+                        </select>
+                    </div>
 
-                        <!-- Expiry Date (Only visible if under warranty or if the user selects expired and remembers the expiry date) -->
-                        <div id="expiry_date_container">
-                            <label for="expiry_date">Expiry Date:</label>
-                            <input type="date" name="expiry_date"
-                                id="expiry_date"><br>
-                        </div>
+                    <!-- Expiry Date -->
+                    <div id="expiry_date_container" class="mb-3">
+                        <label for="expiry_date" class="form-label">Expiry Date:</label>
+                        <input type="date" name="expiry_date" id="expiry_date" class="form-control">
+                    </div>
 
-                        <!-- Remember Expiry Date checkbox -->
-                        <div id="remember_expiry_date_container">
-                            <label for="remember_expiry_date">I don’t remember
-                                the expiry date:</label>
-                            <input type="checkbox" name="remember_expiry_date"
-                                id="remember_expiry_date"><br>
-                        </div>
+                    <!-- Remember Expiry Date checkbox -->
+                    <div id="remember_expiry_date_container" class="form-check mb-3">
+                        <input type="checkbox" name="remember_expiry_date" id="remember_expiry_date" class="form-check-input">
+                        <label for="remember_expiry_date" class="form-check-label">I don’t remember the expiry date</label>
+                    </div>
 
-                        <!-- File Upload -->
-                        <label for="file_path">Upload Bill:</label>
-                        <input type="file" name="file_path" id="file_path"
-                            required><br>
+                    <!-- File Upload -->
+                    <div class="mb-3">
+                        <label for="file_path" class="form-label">Upload Bill:</label>
+                        <input type="file" name="file_path" id="file_path" class="form-control" required>
+                    </div>
 
-                        <button type="submit">Submit</button>
-                        <!-- <button type="submit">Cancle</button> -->
-                    
+                    <!-- Buttons -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary w-100 mb-2">Submit</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary w-100">Go Back</a>
+                    </div>
                 </form>
-            <!-- </div> -->
             </div>
         </div>
-        
-    </body>
-
-</html>
+    </div>
+</div>
 
 {% endblock %}

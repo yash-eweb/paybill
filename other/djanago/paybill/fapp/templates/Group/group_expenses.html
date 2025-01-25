@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Expenses for Group: {{ group.group_name }}</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Paid By</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.date }}</td>
+            <td>{{ expense.category }}</td>
+            <td>₹{{ expense.amount }}</td>
+            <td>{{ expense.description }}</td>
+            <td>{{ expense.paid_by_user.username }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No expenses recorded for this group yet.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

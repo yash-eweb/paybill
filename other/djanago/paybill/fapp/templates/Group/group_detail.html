@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'fapp/css/group_detail.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'fapp/js/group_detail.js' %}"> -->
+
+
+
+{% if g %}
+<!-- <div class="card"> -->
+<div class="group-container">
+    <br><h1 class="h">{{ g.group_name }}</h1>
+    <div class="actions">
+        <a href="{% url 'add_member' g.id %}" class="btn">Add Member</a>
+        <a href="{% url 'add_group_expense' g.id %}" class="btn">Add Expense</a>
+    </div>
+
+    {% if user == g.created_by %}
+    <form method="POST" action="{% url 'update_group_name' g.id %}">
+        {% csrf_token %}
+        <label for="group_name">Change Group Name :</label>
+        <input type="text" name="group_name" value="{{g.group_name}}" required>
+        <button type="submit">Update</button>
+    </form>
+
+    {% endif %}
+
+    <div class="section">
+        <h2>Members</h2>
+        <ul class="list">
+            {% for member in members %}
+            <li class="list-item">{{ member.user.username }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Expenses</h2>
+        <ul class="list">
+            {% for expense in expenses %}
+            <li class="list-item">
+                <strong>{{ expense.category }}</strong>: ₹{{ expense.amount }}
+                <span class="small-text">(Paid by:
+                    {{expense.paid_by_user.username}})</span>
+
+            </li>
+            {% endfor %}
+        </ul>
+        <!-- <h3>Total Expense: ₹{{ total_expense }}</h3>
+
+    <h3>Per Member Share: ₹{{ per_member_share }}</h3> -->
+    </div>
+     <div class="section">
+        <h2>Total Expenses</h2>
+        <ul class="list">
+            {{ total_expense }}
+        </ul>
+     </div>
+     <div class="section">
+        <h2>Per Member</h2>
+        <ul class="list">
+            {{ per_member_share }}&nbsp;/-
+        </ul>
+     </div>
+    
+
+      <!--<div class="section">
+       <h2>Balances</h2>
+        <ul class="list">
+            {% for message in balances %}
+            <li class="list-item">{{ message }}</li>
+            {% endfor %}
+        </ul> -->
+
+        <!-- <ul class="list">
+            {% for user, balance in balances %}
+            <li class="list-item">
+                <strong>{{ user.username }}</strong>:
+                <span
+                    class="balance {% if balance > 0 %}positive{% else %}negative{% endif %}">
+                    ₹{{ balance|floatformat:2 }}
+                </span>
+                {% if balance > 0 %}
+                <span class="small-text">will receive ₹{{ balance|floatformat:2
+                    }}</span>
+                {% else %}
+                <span class="small-text">needs to pay ₹{{ balance|add:"0.00"
+                    }}</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul> -->
+
+    <!-- </div>  -->
+
+    <div class="section">
+    <h2>Settlement Plan:</h2>
+    {% if settlement_plan %}
+        <ul>
+            {% for settlement in settlement_plan %}
+
+            <!-- {% if members > 2 %}
+            <li>{{ settlement.debtor.username }} needs to pay ₹{{ settlement.amount }} to Payable User</li>
+            {% elif members == 2 %}
+            <li>{{ settlement.debtor.username }} needs to pay ₹{{ settlement.amount }} to {{ settlement.creditor.username }}</li>
+            {% endif %} -->
+
+                 {% if members|length > 2 %}
+                <li>{{ settlement.debtor.username }} needs to pay ₹{{ settlement.amount }} to Payble User</li>
+                {% else %}
+                <li>{{ settlement.debtor.username }} needs to pay ₹{{ settlement.amount }} to {{ settlement.creditor.username }}</li>
+                
+                {% endif %} 
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No settlement required.</p> 
+    {% endif %}
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    </div>
+
+    
+
+    <!-- <div class="section">
+        <h2>Settlements</h2>
+        {% if transactions %}
+        <ul class="list">
+            {% for transaction in transactions %}
+            <li class="list-item">
+                <strong>{{ transaction.from }}</strong> needs to pay
+                ₹{{ transaction.amount }} to <strong>{{ transaction.to
+                    }}</strong>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>All balances are settled.</p>
+        {% endif %}
+    </div> -->
+
+</div>
+</div>
+{% else %}
+<div class="no-data">
+    <h2>No Data Available</h2>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<!-- admin/notification_status.html -->
+<h1>Notification Status</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Notification Message</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for notification in notifications %}
+            <tr>
+                <td>{{ notification.user.username }}</td>
+                <td>{{ notification.message }}</td>
+                <td>{% if notification.is_read %}Read{% else %}Unread{% endif %}</td>
+                <td>
+                    {% if not notification.is_read %}
+                        <a href="{% url 'send_notification_again' notification.id %}">Send Again</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

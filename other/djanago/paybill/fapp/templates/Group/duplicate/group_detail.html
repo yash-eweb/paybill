@@ -1,0 +1,66 @@
+
+
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'fapp/css/group_detail.css' %}">
+
+{% if g %}
+<div class="group-container">
+    <h1 class="group-title">{{ g.group_name }}</h1>
+    <div class="actions">
+        <a href="{% url 'add_member' g.id %}" class="btn">Add Member</a>
+        <a href="{% url 'add_group_expense' g.id %}" class="btn">Add Expense</a>
+    </div>
+
+    <div class="section">
+        <h2>Members</h2>
+        <ul class="list">
+            {% for member in members %}
+            <li class="list-item">{{ member.user.username }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Expenses</h2>
+        <ul class="list">
+            {% for expense in expenses %}
+            <li class="list-item">
+                <strong>{{ expense.category }}</strong>: ₹{{ expense.amount }}
+                <span class="small-text">(Paid by: {{ expense.paid_by_user.username }})</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+    <h2>Balances</h2>
+    <ul class="list">
+        {% for balance in balances %}
+        <li class="list-item">
+            {% if balance.balance > 0 %}
+                {{ balance.user.username }} has to take ₹{{ balance.balance|floatformat:2 }} from the group.
+            {% else %}
+                {{ balance.user.username }} has to give ₹{{ balance.balance|floatformat:2|slice:1 }} to the group.
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+</div>
+
+{% else %}
+<div class="no-data">
+    <h2>No Data Available</h2>
+</div>
+{% endif %}
+
+{% endblock %}

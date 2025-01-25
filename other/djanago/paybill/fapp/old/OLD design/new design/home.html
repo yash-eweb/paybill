@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<h1 class="h">Welcome {{ user.username }}</h1><br>
+<h1 class="h">Welcome {{ user.username }}</h1>
+<h4 class="text-center">
+  <a href="{% url 'addbill' %}" class="btn btn-primary">Add New Bill <span class="material-icons"></span></a>
+</h4>
+
+<hr>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="{% static 'fapp/css/home.css' %}"> -->
+</head>
+
+<div class="container-flude">
+  {% if bill %}
+  <div class="table-responsive">
+    <table class="table table-hover table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Bill Name</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Status</th>
+          <th scope="col">Ex Date</th>
+          <th scope="col">Remember</th>
+          <th scope="col">Upload Date</th>
+          <th scope="col">Store Path</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in bill %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ data.bill_name }}</td>
+          <td>{{ data.amount }}</td>
+          <td>{{ data.warranty_status }}</td>
+          <td>{{ data.expiry_date }}</td>
+          <td>{{ data.remember_expiry_date }}</td>
+          <td>{{ data.uploaded_date }}</td>
+          <td>
+            {% if data.file_path %}
+            <a href="{{ data.file_path.url }}" target="_blank">View File</a>
+            {% else %}
+            <span>No File Available</span>
+            {% endif %}
+          </td>
+          <td><a href="{% url 'update' data.id %}"><i class="fas fa-edit edit-icon"></i></a></td>
+            
+          <td><a href="{% url 'delete' data.id %}"><i class="fas fa-trash delete-icon"></i></a></td>
+            
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="me">
+    <h2>No Data Available</h2>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}

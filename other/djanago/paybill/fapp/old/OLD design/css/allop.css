@@ -1,0 +1,215 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Heading styles */
+h4 {
+    color: whitesmoke;
+    font-size: 2em;
+    /* Default font size */
+    text-align: center;
+    margin: 20px 0;
+}
+
+
+
+/* Menu wrapper styles */
+.menu-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Menu container styles */
+/* .menu-container {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+} */
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    flex: 0 0 auto;
+    width: 200px;
+    /* Adjust the width as needed */
+    margin: 0 10px 10px 0;
+}
+
+/* Card styles */
+/* .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+} */
+
+
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon styles */
+.icon {
+    font-size: 40px;
+    color: #0072ff;
+    margin-bottom: 10px;
+    animation: pop 1s infinite alternate;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-container {
+        grid-template-columns: 1fr;
+        /* Stack cards vertically */
+    }
+
+    h1 {
+        font-size: 1.5em;
+        /* Adjust font size for smaller screens */
+        margin: 10px 0;
+        line-height: 1.4;
+        /* Add line spacing for better readability */
+    }
+
+    .icon {
+        font-size: 35px;
+        /* Reduce icon size slightly for smaller screens */
+    }
+
+    h3 {
+        font-size: 1em;
+        /* Adjust heading size for mobile */
+    }
+}
+
+
+/* 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2em;
+    text-align: center;
+    margin: 20px 0;
+    Add margin for spacing
+}
+.menu-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.menu-container {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+    font-size: 40px;
+    color: #0072ff;
+    margin-bottom: 10px;
+    animation: pop 1s infinite alternate;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+
+
+@media (max-width: 768px) {
+    .menu-container {
+        grid-template-columns: 1fr;
+        Stack cards vertically on small screens
+    }
+
+    h1 {
+        font-size: 1.8em;
+      
+        margin: 10px 0;
+    }
+} */

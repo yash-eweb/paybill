@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'fapp/css/home.css' %}">
+
+<div class="row">
+  <!-- <h1 class="h">All Group</h1><br> -->
+  <h1 class="h" style="margin-top: 70px;">All Group</h1><br>
+  <a href="{% url 'create_group' %}"><h4>Create Group</h4></a>
+  <hr>
+</div>
+
+{% if group %}
+<!-- Add table-responsive class to make the table scrollable on small screens -->
+<div class="table-responsive">
+  <table class="table table-hover table-dark table-striped">
+
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Group</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Created Date</th>
+        <!-- <th scope="col">Details</th> -->
+        <!-- <th scope="col">Edit</th>
+        <th scope="col">Delete</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in group %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td><a href="{% url 'group_detail' data.id %}"> {{ data.group_name }}</a></td>
+        <td>
+          {% if data.created_by == group.created_by %}
+          You
+          {% else %}
+          {{ data.created_by }}
+          {% endif %}
+        </td>
+        <td>{{ data.created_date }}</td>
+        <!-- {% if data.description %}
+        <td>{{ data.description }}</td>
+        {% else %}
+        <td><p>No Data</p></td>
+        {% endif %} -->
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="me">
+  <h2>No Group Available</h2>
+</div>
+{% endif %}
+
+{% endblock %}

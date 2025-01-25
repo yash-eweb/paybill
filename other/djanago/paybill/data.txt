@@ -1,0 +1,19 @@
+
+Members
+a
+q
+cv
+Expenses
+300 3demo
+: ₹300.00
+(Paid by: q)
+Payments:
+Balances
+a needs to pay ₹100.00 to q
+cv needs to pay ₹100.00 to q  
+
+now my main qui are  in this case a paid 30 for tea expense  so output are 
+out put 
+a needs to pay ₹90.00 to q
+cv needs to pay ₹100.00 to q  
+cv needs to pay ₹10.00 to a     this are see this out put base on this code logic  here is the example but it need to calculate daynamic

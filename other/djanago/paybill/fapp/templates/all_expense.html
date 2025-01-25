@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'fapp/css/home.css' %}">
+
+
+<div class="row">
+    <!-- <h1>All Expense</h1><br> -->
+    <h1 style="margin-top: 70px;">All Expense</h1><br>
+
+
+    <!-- display success or error messages -->
+     <div class="alert-container">
+        {% if messages %}
+        <div class="alert alert-info" role="alert" id="alert-message">
+          {% for message in messages %}
+          <p>{{ message }}</p>
+          {% endfor %}
+
+        </div>
+
+        {% endif %}
+     </div>
+
+    <h4 class="text-center">
+     <a href="{% url 'addexpense' %}" class="btn btn-primary">
+      Add New  <span class="material-icons"></span>
+    </a>
+    </h4>
+     <hr>
+</div>
+
+
+{% if expense %}
+<div class="table-responsive">
+<table class="table table-hover table-dark table-striped">
+
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Category</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Date</th>
+      <th scope="col">Description</th>
+      <th scope="col">Created Date</th>
+      <th scope="col">Updated Date</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in expense %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{data.category}}</td>
+      <td> {{data.amount}}</td>
+      <td>{{data.date}}</td>
+      {% if data.description %}
+      <td>{{data.description }}</td>
+      {% else %}
+      <td><p>No Data</p></td>
+      {% endif %}
+      <td>{{data.created_at }}</td>
+      <td>{{data.updated_at }}</td>
+      
+      
+      <td><a href="{% url 'exupdate' data.id %}" class="btn btn-primary"> <i class="fas fa-edit edit-icon"></i></a> </td>
+      <!-- <td><a href="{% url 'exdelete' data.id %}"><i class="fas fa-trash delete-icon"></i></a></td> -->
+
+      <td>
+
+        <a href="{% url 'exdelete' data.id %}"
+        class="btn btn-danger"
+        data-bs-toggle="modal"
+        data-bs-target = "#deleteModal"
+        data-bill-name = "{{data.category}}"
+        data-delete-url = "{% url 'exdelete' data.id %}">
+        <i class="fas fa-trash delete-icon"></i>
+      </a>
+
+      </td>
+
+    </tr>
+
+    {% endfor %}
+
+  </tbody>
+</table>
+</div>
+{% else %}
+<div class="me">
+  <h2>No Expense Data Available</h2>
+</div>
+{% endif %}
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1"
+  aria-labelledby="deleteModalLabel" aria-hidden="tr">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete the Expense: <strong
+          id="billName"></strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          data-bs-dismiss="modal">Cancel</button>
+        <a href="#" id="confirmDeleteBtn" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+
+    // get the modal and its elements
+    const deleteModal = document.getElementById('deleteModal') ;
+    const billNameElement = document.getElementById('expense');
+    const confirmDeleteBtn =  document.getElementById('confirmDeleteBtn');
+
+    if(deleteModal){
+      deleteModal.addEventListener('show.bs.modal', function(event){
+        const button = event.relatedTarget;
+
+        const billName =button.getAttribute('data-bill-name')
+        const deleteUrl =  button.getAttribute('data-delete-url');
+
+        // update the modal content dynamically
+        if(billNameElement){
+          billNameElement.textContent = billName ;
+        }
+
+        if (confirmDeleteBtn){
+          confirmDeleteBtn.href =deleteUrl;
+        }
+      });
+    }
+    });
+
+  
+
+  // Check if the message is displayed
+        const alertMessage = document.getElementById('alert-message');
+
+        if (alertMessage) {
+            // Set a timeout to remove the message after 5 seconds
+            setTimeout(function() {
+                alertMessage.style.display = 'none';
+            }, 4000); // 4000 milliseconds = 4 seconds
+        }
+</script>
+{% endblock %}
+
+{% endblock %}

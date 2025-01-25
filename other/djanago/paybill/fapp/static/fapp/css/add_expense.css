@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    /* justify-content: center;
+    align-items: center;
+display: flex; */
+    
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1.h,
+h1 {
+    text-align: center;
+    color: #0072ff;
+    margin-bottom: 20px;
+    font-size: 24px;
+    
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    /* Ensures padding doesn't affect width */
+}
+
+textarea {
+    resize: vertical;
+    /* Allows resizing only vertically */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0072ff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+p {
+    font-size: 14px;
+    margin-top: -10px;
+    text-align: center;
+}
+
+a {
+    color: #0072ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+       
+        padding: 10px;
+    }
+
+    h1.h,
+    h1 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    button {
+        font-size: 14px;
+        
+    }
+}
+
+@media (max-width: 480px) {
+    label {
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+        font-size: 14px;
+        
+    }
+
+    button {
+        font-size: 13px;
+        padding: 8px;
+    }
+        h1.h,
+        h1 {
+            font-size: 20px;
+            /* Ensure readability on mobile */
+            margin-bottom: 10px;
+            /* Reduce margin for smaller screens */
+        }
+}

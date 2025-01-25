@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+
+<!-- <link rel="stylesheet" href="{% static 'fapp/css/notifications.css' %}"> -->
+
+<div class="container py-5">
+    <h1 class="text-center mb-4 mt-5">Your Notifications</h1>
+
+    {% if notifications %}
+        <div class="list-group">
+            {% for n in notifications %}
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="flex-grow-1">{{ n.message }}</span>
+                <a href="{% url 'mark' n.id %}" class="btn btn-link text-decoration-none">Mark as Read</a>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h4 class="text-center">No new notifications.</h4> 
+    {% endif %}
+</div>
+
+{% endblock %}

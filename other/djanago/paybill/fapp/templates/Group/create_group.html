@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}paybill{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header text-center">
+                <h4>Create Group</h4>
+
+            </div>
+            <div class="card-body">
+                {% if messages %}
+                {% for message in messages %}
+                
+                <div class="alert alert-warning alert-dismissible fade show"  role="alert">
+                    {{message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                    {% if error_message %}
+                    
+                    {% endif %}
+                    
+                    <label for="group_name">Group Name</label>
+                        <input type="text" name="group_name" id="group_name" placeholder="Enter Group Name"
+                            class="form-control" required />
+
+                   
+                    
+                    <button type="submit"
+                        class="btn btn-success w-100">Register</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
